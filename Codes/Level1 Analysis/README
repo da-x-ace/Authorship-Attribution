@@ -1,0 +1,8 @@
+There are 9 files in this directory used for the PCFG generation and analysis on our dataset.
+We had data stored as one blog per line, one file per author.
+split.py is used to split the blogs into one per file so that we can delimit the parse trees generated per sentence to each blog.
+After running split.py, I ran pa.sh from the stanford parser directory to work on each of the generated files and out put a treebank'd parse tree for each sentence in a blog with each blog contained in it's own file.
+extract.sh calls extract.py on all the documents in one author's directory to extract the first level of the treebank generated based on parenthesis counting.
+after extracting these they had to be combined into one file per author so I ran combine.sh to call combine.py over all the files to output one file per author with each line containing the parsetrees for all the sentences in one blog delimited by '//'.
+I manually merged the individual files from the previous step into one file train_all and test_all depending on testing or training data.
+count.py produces the tf-idf counts for the training data and tcount.py for the testing data.
